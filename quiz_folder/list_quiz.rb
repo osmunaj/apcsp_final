@@ -47,17 +47,29 @@ end
 
 
 def series_up(n)
-    list = [0]
+    list = [1]
     length = n*(n+1)/2
-    i = 0
-    length.times do
-        
-        list[]
-    end
+    i = 1
+    reset = 3
 
+    (length - 1).times do
+        list.push i
+        i += 1
+        if i == reset
+            i = 1
+            reset += 1
+        end
+    end
+    return list
 end
 
-puts series_up(1) #==> [1]
-puts series_up(2) #==>[1,1,2]
-puts series_up(3) #==>[1,1,2,1,2,3]
-puts series_up(4) #==>[1,1,2,1,1,2,3,1,2,3,4]
+puts print series_up(1) #==> [1]
+
+puts print series_up(2) #==>[1,1,2]
+
+puts print series_up(3) #==>[1,1,2,1,2,3]
+
+puts print series_up(4) #==>[1,1,2,1,1,2,3,1,2,3,4]
+
+
+
