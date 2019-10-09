@@ -19,12 +19,12 @@ def three_even?(list)                                                           
 end
 
 puts three_even?([2,1,3,5]) #==> False
-puts three_even?([2,4,12,5]) #==> True
+puts three_even?([2,4,12,5]) #==> True                                                 
 puts three_even?([2,1,4,6]) #==> False
 
 
 
-def bigger_two(list1, list2)
+def bigger_two(list1, list2)                                                             #Complete
     list1_sum = 0
     list2_sum = 0
     
@@ -46,7 +46,7 @@ puts print bigger_two([1,2],[3,4]) #==> [3,4]
 puts print bigger_two([1,7],[4,4]) #==> [1,7]
 
 
-def series_up(n)
+def series_up(n)                                                                          #Complete
     list = [1]
     length = n*(n+1)/2
     i = 1
@@ -69,7 +69,7 @@ puts print series_up(2) #==>[1,1,2]
 
 puts print series_up(3) #==>[1,1,2,1,2,3]
 
-puts print series_up(4) #==>[1,1,2,1,1,2,3,1,2,3,4]
+puts print series_up(4) #==>[1,1,2,1,2,3,1,2,3,4]
 
 
 
