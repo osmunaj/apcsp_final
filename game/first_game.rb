@@ -12,8 +12,9 @@ class Tutorial < Gosu::Window
 
         @star_anim = Gosu::Image.load_tiles("star.png", 25, 25)
         @stars = Array.new
+        @meteors = Array.new
         @font = Gosu::Font.new(20)
-        @meteors = Meteor.new
+       
     end
 
     def update
@@ -29,12 +30,13 @@ class Tutorial < Gosu::Window
 
         @player.move
         @player.collect_stars(@stars)
+        @meteor.crash
 
         if rand(100) < 4 and @stars.size < 25
             @stars.push(Star.new(@star_anim))
         end
 
-        if rand(100) < 4 and @meteors.size < 25
+        if rand(100) < 4 and @meteors.size < 5
             @meteors.push(Meteor.new)
         end
     end
@@ -43,7 +45,7 @@ class Tutorial < Gosu::Window
         @background_image.draw(0,0, ZOrder::BACKGROUND) 
         @player.draw
         @stars.each { |star| star.draw }
-        @meteors.draw
+        @meteors.each { |meteor| meteor.draw}
         @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)                                            #Coordnates and Angles
         # @font.draw("X: #{@player.x}", 200, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
         # @font.draw("Y: #{@player.y}", 400, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
@@ -62,13 +64,8 @@ end
 
 
 class Player
-    def x
-        @x
-    end
+  
 
-    def y
-        @y
-    end
     def initialize
         @image = Gosu::Image.new("starfighter.bmp")
         @x = @y = @vel_x = @vel_y = @angle = 0.0
@@ -174,18 +171,39 @@ end
 
 class Meteor
     attr_reader :x, :y
-
+  
     def initialize
-        @image = Gosu::Image.new("meteor.jpg")
+        @color = Gosu::Color::BLACK.dup
+        @color.red = rand(30..40)
+        @color.green = rand(30..40)
+        @color.blue = rand(30..40)
         @x = rand * 640
         @y = rand * 480
+        @x_vel = rand(-5..5)
+        @y_vel = rand(-5..5)
     end
 
-    def draw
+    def draw 
+        @image = Gosu::Image.new("meteor.jpg") 
         img = @image
         img.draw(@x - img.width / 2.0, @y - img.height / 2.0,
-            ZOrder::METEORS, 1, 1, @color, :add)
+            ZOrder::METEORS, 0.1, 0.1, @color, :add)
     end
+
+    def crash
+        @x += @x_vel
+        @y += @y_vel
+        
+        meteors.reject! do |meteor|
+            if @x < 0 || @x > 640 || @y < 0 || @y > 240
+                true
+            else
+                false
+            end
+        end
+    end
+
+    
 end
 
 
