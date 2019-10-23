@@ -13,7 +13,7 @@ class Tutorial < Gosu::Window
         @star_anim = Gosu::Image.load_tiles("star.png", 25, 25)
         @stars = Array.new
         @font = Gosu::Font.new(20)
-        @meteors = Array.new
+        @meteors = Meteor.new
     end
 
     def update
@@ -33,13 +33,17 @@ class Tutorial < Gosu::Window
         if rand(100) < 4 and @stars.size < 25
             @stars.push(Star.new(@star_anim))
         end
+
+        if rand(100) < 4 and @meteors.size < 25
+            @meteors.push(Meteor.new)
+        end
     end
 
     def draw
         @background_image.draw(0,0, ZOrder::BACKGROUND) 
         @player.draw
         @stars.each { |star| star.draw }
-        @meteors.each { |meteor| meteor.draw}
+        @meteors.draw
         @font.draw("Score: #{@player.score}", 10, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)                                            #Coordnates and Angles
         # @font.draw("X: #{@player.x}", 200, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
         # @font.draw("Y: #{@player.y}", 400, 10, ZOrder::UI, 1.0, 1.0, Gosu::Color::YELLOW)
@@ -78,50 +82,21 @@ class Player
 
     def bounce
         if @x > 640
-            @vel_x *= -1
-            @angle -= 360
-            if @angle < 0
-                @angle *= -1
-            end
             @x  -= 40
+            @vel_x *= -1
         end
         if  @x < 0 
-            @vel_x *= -1
-            @angle -= 360
-            if @angle < 0
-                @angle *= -1
-            end
             @x  += 40
+            @vel_x *= -1
         end
         if  @y < 0 
-            if @angle >= 270 && @angle < 360
-                @angle -= 90
-                @y += 40
-                @vel_y *= -1
-            else
-                @vel_y *= -1
-                @angle -= 180
-                if @angle < 0
-                    @angle *= -1
-                end
-                @y += 40
-            end
+            @y += 40
+            @vel_y *= -1
         end
         if  @y > 480
-            if @angle >= 180 && @angle < 270
-                @angle += 90
-                @y -= 40
-                @vel_y *= -1
-            else
-                @vel_y *= -1
-                @angle -= 180
-                if @angle < 0
-                    @angle *= -1
-                end
-                @y -= 40
-            end
+            @y -= 40
+            @vel_y *= -1
         end
-
     end
 
     def warp(x,y)
@@ -145,7 +120,6 @@ class Player
         bounce
         @x += @vel_x
         @y += @vel_y
-        
 
         @vel_x *= 0.95
         @vel_y *= 0.95
@@ -174,7 +148,7 @@ end
 
 
 module ZOrder
-    BACKGROUND, STARS, PLAYER, UI = *0..3
+    BACKGROUND, STARS, PLAYER, METEORS, UI = *0..4
 end
 
 class Star
@@ -199,19 +173,16 @@ end
 
 
 class Meteor
+    attr_reader :x, :y
 
     def initialize
-        
-        @color = Gosu::Color::BLACK.dup
-        @color.red = rand(256 - 40) + 40
-        @color.green = rand(256 - 40) + 40
-        @color.blue = rand(256 - 40) + 40
+        @image = Gosu::Image.new("meteor.jpg")
         @x = rand * 640
         @y = rand * 480
     end
 
     def draw
-        @image = Gosu::Image.new("meteor.jpg")
+        img = @image
         img.draw(@x - img.width / 2.0, @y - img.height / 2.0,
             ZOrder::METEORS, 1, 1, @color, :add)
     end
