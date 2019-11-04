@@ -20,8 +20,7 @@ class MoneyBomb < Gosu::Window
             @player.right
         end
 
-        @player.collect_apples(@apples)
-        @apple.apples_off_screen(@apples)
+       
 
         if rand(100) < 4 && @apples.size < 10
             @apples.push(Apple.new)
@@ -29,8 +28,15 @@ class MoneyBomb < Gosu::Window
         
     end
 
+    def collect_apples
+        if Gosu.distance(@Player.x, 550, @Apple.x, @Apple.y) < 50
+            @score += 10
+            @Apple.reset
+        end
+    end
+
     def draw
-        
+       collect_apples
         @apple.move
         @font = Gosu::Font.new(20)
         @player.draw
@@ -76,20 +82,10 @@ class Player
         @score
     end
 
-    def collect_apples(apples)
-        
-        apples.reject! do |apple|
-            if Gosu.distance(@x, 550, apple.x, apple.y) < 100
-                @score += 10
-                return true
-            else
-                return false
-            end
-        end
-    end
+    
+    
 
-    def left
-        
+    def left 
         @vel -= 1.5
         
 
@@ -98,7 +94,6 @@ class Player
     end
 
     def right
-        
         @vel += 1.5
         
         @angle += 5
@@ -164,8 +159,18 @@ class Apple
         img.draw(@x - img.width / 2.0, @y - img.height / 2.0,
             ZOrder::APPLES, 0.2, 0.2)
         move
+        x
+        y
+        if @y > 900
+            reset
+        end
+        
     end
 
+    def reset
+        @y = 100
+        @x = rand(100..800)
+    end
 
     def move
         @y += @vel
@@ -179,15 +184,7 @@ class Apple
         @y
     end
 
-    def apples_off_screen(apples)
-        apples.reject do 
-            if @x > 400
-                true
-            else
-                false
-            end
-        end
-    end
+  
 
 end
 
