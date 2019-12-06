@@ -80,7 +80,10 @@ function ready(){
         let natural_minor_scale = [2, 1, 2, 2, 1, 2, 2]
         let harmonic_minor_scale = [2, 1, 2, 2, 1, 3, 1]
         let dorian_mode_scale = [2, 1, 2, 2, 2, 1, 2]
+        let phrygian_mode_scale = [1, 2, 2, 2, 1, 2, 2]
+        let lydian_mode_scale = [2, 2, 2, 1, 2, 2, 1]
         let mixolydian_mode_scale = [2, 2, 1, 2, 2, 1, 2]
+        let locrian_mode_scale = [1, 2, 2, 1, 2, 2, 2]
         let blues_scale = [3, 2, 1, 1, 3, 2]
         
         
@@ -104,6 +107,44 @@ function ready(){
             }
         }
 
+        if (scale_type == "locrian_mode"){
+            i = 0
+            if (sharp_or_flat == "sharp"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (sharpnotes[note_value]) + " "
+                    note_value += locrian_mode_scale[i]
+                    i += 1
+                }
+            }else if (sharp_or_flat == "flat"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (flatnotes[note_value]) + " "
+                    note_value += locrian_mode_scale[i]
+                    i += 1
+                }
+            }
+        }
+
+        if (scale_type == "lydian_mode"){
+            i = 0
+            if (sharp_or_flat == "sharp"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (sharpnotes[note_value]) + " "
+                    note_value += lydian_mode_scale[i]
+                    i += 1
+                }
+            }else if (sharp_or_flat == "flat"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (flatnotes[note_value]) + " "
+                    note_value += lydian_mode_scale[i]
+                    i += 1
+                }
+            }
+        }
+
         if (scale_type == "natural_minor"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -118,6 +159,25 @@ function ready(){
                     note_value %= 12
                     final_scale += (flatnotes[note_value]) + " "
                     note_value += natural_minor_scale[i]
+                    i += 1
+                }
+            }
+        }
+
+        if (scale_type == "phrygian_mode"){
+            i = 0
+            if (sharp_or_flat == "sharp"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (sharpnotes[note_value]) + " "
+                    note_value += phrygian_mode_scale[i]
+                    i += 1
+                }
+            }else if (sharp_or_flat == "flat"){
+                while (i < 8){
+                    note_value %= 12
+                    final_scale += (flatnotes[note_value]) + " "
+                    note_value += phrygian_mode_scale[i]
                     i += 1
                 }
             }
