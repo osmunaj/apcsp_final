@@ -5,33 +5,34 @@
     <body>
         <form name="scale_form">
             <br>
-            <label for="tonic"></label>
-            <input type="text" name="tonic" id = "tonic" placeholder="Type your tonic">
+            <label for="tonic">Type your tonic here!</label>
+            <br>
+            <input class = "blue"type="text" name="tonic" id = "tonic" placeholder="ex: A, F#, Eb">
             <br>
             <br>
             <br>
             <label for="scale">Scale Type: </label>
             <br>
-            <select name="scales" >
-                <option value="major">Major</option>
-                <option value="minor">minor</option>
-                <option value=""></option>
-                <option value=""></option>
-
+            <select class = "blue" name="scales" >
+                <option class = "blue" value="major">Major</option>
+                <option class = "blue" value="natural_minor">Natural Minor</option>
+                <option class = "blue" value="harmonic_minor">Harmonic Minor</option>
+                <option class = "blue" value="dorian_mode">Dorian Mode</option>
+                <option class = "blue" value="mixolydian_mode">Mixolydian Mode</option>
+                <option class = "blue" value="blues">Blues</option>
             </select>
             <br>
             <br>
             <br>
-            <input type="button" id = "load" value="Go!">
+            <input class = "blue" type="button" id = "load" value="Go!">
             <br>
         </form>
-        
-
-  
-
-
-
         <br>
+        <br>
+        <h2>Your scale: </h2>
+        <p id = "type"></p>
+        <p id = "final"></p>
+
         <!-- <h1>Mission Statement:</h1>
         <h3>- Target Audience -</h3>
         <p>Beginner musicians Learning 
