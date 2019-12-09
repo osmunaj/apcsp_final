@@ -1,18 +1,19 @@
 <html>
     <head>
         <link rel="stylesheet" href="apcsp_final.css">
+        <title>Scale Guide For Beginners</title>
     </head>
     <body>
-        <form name="scale_form">
+            <h1 class = "center">A Scale Guide for Beginner Musicians!</h1>
+            <p class = "center">Just imput your tonic into the box, select a type of scale, and press go! The website will show you your scale!</p>
+        <form name="scale_form" class = "border">
             <br>
-            <label for="tonic">Type your tonic here!</label>
+            
+            <br>
+            <label for="tonic" class = heading>Type your scale here!</label>
             <br>
             <input class = "blue"type="text" name="tonic" id = "tonic" placeholder="ex: A, F#, Eb">
-            <br>
-            <br>
-            <br>
-            <label for="scale">Scale Type: </label>
-            <br>
+            
             <select class = "blue" name="scales" >
                 <option class = "blue" value="major">Ionion (Major)</option>
                 <option class = "blue" value="dorian_mode">Dorian Mode</option>
@@ -33,31 +34,11 @@
             <input class = "blue" type="button" id = "load" value="Go!">
             <br>
         </form>
-        <br>
-        <br>
-        <h2>Your scale: </h2>
-        <p id = "type"></p>
-        <p id = "final"></p>
-
-        <!-- <h1>Mission Statement:</h1>
-        <h3>- Target Audience -</h3>
-        <p>Beginner musicians Learning 
-            about the basics of scale 
-            patters and intervals </p>
-        <h3>- Problem being solved -</h3>
-        <p>The user imputs any note to
-            use as the tonic, as well as 
-            the type of scale, and the 
-            program outputs all the notes
-            of that scale as well as other
-            useful information like chords</p>
-        <h3>- Why it will be useful -</h3>
-        <p>This will help any new musicians
-            understand the patters and theory
-            of different scales. As a beginner
-            musician, I had trouble for a while
-            understanding how scale patterns work,
-            and I believe this will help.</p> -->
+        <h2 class = center>Your scale: </h2>
+        <p id = "type" class = center>Imput your scale!</p>
+        <p id = "final" class = "center"></p>
+        <a href="mission_statement.html" class = "blue">My mission statement</a>
+       
         <script src = "apcsp_final.js"></script>
     </body>
 </html>

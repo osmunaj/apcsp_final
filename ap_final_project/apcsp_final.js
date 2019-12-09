@@ -87,6 +87,7 @@ function ready(){
         let blues_scale = [3, 2, 1, 1, 3, 2]
         
         
+        
 
         if (scale_type == "major"){
             i = 0
@@ -265,8 +266,17 @@ function ready(){
         if (scale_type == "major"){
             final_scale_type = "Major"
         }
+        if (scale_type == "phrygian_mode"){
+            final_scale_type = "Phrygian"
+        }
+        if (scale_type == "lydian_mode"){
+            final_scale_type = "Lydian"
+        }
         if (scale_type == "natural_minor"){
-            final_scale_type = "Natural Minor"
+            final_scale_type = "Aeolian (Natural Minor)"
+        }
+        if (scale_type == "locrian_mode"){
+            final_scale_type = "Locrian"
         }
         if(scale_type == "harmonic_minor"){
             final_scale_type = "Harmonic Minor"

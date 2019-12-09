@@ -1,17 +1,43 @@
 html{
-
+    background: navy;
 }
 
+.center{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.heading{
+    font-size: x-large;
+}
+
+p{
+    color: oldlace;
+}
+
+h1{
+    color: oldlace;
+    
+}
+h2{
+    color: oldlace;
+}
 form{
     text-align: center;
-    background: blue;
+    
     border: black;
+}
+.border{
+    border: oldlace;
+    border-style: dotted;
+    border-radius: 9 cm;
 }
 
 label{
-    background: lightblue;
+    background: oldlace;
 }
 
 .blue{
-    background: lightblue;
+    background: oldlace;
+    text-align: center;
 }
