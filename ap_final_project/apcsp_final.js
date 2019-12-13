@@ -7,9 +7,7 @@ function ready(){
     let flatnotes  = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab" ]
 
     load.onclick = function(){
-        
         let scale_form = document.forms.scale_form;
-
         let note = scale_form.tonic.value;
         let scale_type = scale_form.scales.value;
         let sharp_or_flat = "none"
@@ -19,9 +17,7 @@ function ready(){
         let real_note = false
         let i = 0
         let note_value = 0
-        
         let final_scale = ""
-
         if (note == "Fb"){
             note = "E";
         }
@@ -34,9 +30,6 @@ function ready(){
         if (note == "Cb"){
             note = "B";
         }
-
-
-        
         while (i < 12 && real_note == false){
             if(note == sharpnotes[i]){
                 real_note = true;
@@ -44,7 +37,6 @@ function ready(){
                 if (note == "F"){
                     sharp_or_flat = "flat"
                 }
-
                 note_value = i;
             }else{
                 i += 1;
@@ -126,7 +118,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "lydian_mode"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -145,7 +136,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "natural_minor"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -164,7 +154,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "phrygian_mode"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -183,7 +172,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "harmonic_minor"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -202,7 +190,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "dorian_mode"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -221,7 +208,6 @@ function ready(){
                 }
             }
         }
-
         if (scale_type == "mixolydian_mode"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -240,9 +226,6 @@ function ready(){
                 }
             }
         }
-
-
-
         if (scale_type == "blues"){
             i = 0
             if (sharp_or_flat == "sharp"){
@@ -261,8 +244,9 @@ function ready(){
                 }
             }
         }
-
+        
         let final_scale_type = ""
+
         if (scale_type == "major"){
             final_scale_type = "Major"
         }
@@ -294,7 +278,6 @@ function ready(){
         console.log(final_scale)
         document.getElementById("type").textContent = note + " "+ final_scale_type
         document.getElementById("final").textContent = final_scale
-        
     };
 }
 
