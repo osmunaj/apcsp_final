@@ -7,13 +7,10 @@ function ready(){
     let flatnotes  = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab" ]
 
     load.onclick = function(){
-        let scale_form = document.forms.scale_form;
+        let scale_form = document.forms.scale_form;     
         let note = scale_form.tonic.value;
         let scale_type = scale_form.scales.value;
-        let sharp_or_flat = "none"
-        // console.log(note)
-        // console.log(scale_type)
-        //let real_note = false;
+        let sharp_or_flat = "none"                                    //Here I learned how to take an item from a form and impliment it into a variable in JS
         let real_note = false
         let i = 0
         let note_value = 0
@@ -62,12 +59,6 @@ function ready(){
                 alert("Not a real note.")
             }
         }
-
-        // if (note == "G" || note == "D" || note == "A" || note == "E" || note == "B"){
-        //     sharp_or_flat == "sharp"
-        // }
-        
-
         let major_scale = [2, 2, 1, 2, 2, 2, 1]
         let natural_minor_scale = [2, 1, 2, 2, 1, 2, 2]
         let harmonic_minor_scale = [2, 1, 2, 2, 1, 3, 1]
@@ -276,7 +267,7 @@ function ready(){
         }
 
         console.log(final_scale)
-        document.getElementById("type").textContent = note + " "+ final_scale_type
+        document.getElementById("type").textContent = note + " "+ final_scale_type         //Here I learned how to take a variable from JS and insert it into the HTML code
         document.getElementById("final").textContent = final_scale
     };
 }
